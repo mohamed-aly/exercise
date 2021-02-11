@@ -1,0 +1,93 @@
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <div class="d-flex">
+            <input class="form-control me-2"
+                   type="text" placeholder="Name, Phone" aria-label="Name, Phone"
+                   [(ngModel)]="query"
+                   (keyup.enter)="search(query)">
+            <button class="btn btn-outline-secondary"
+                    type="button" id="button-addon2"
+                    (click)="search(query)">Search</button>
+
+        </div>
+    </div>
+</nav>
+<div class=" container-fluid
+            ">
+    <div class="row content">
+        <div class="col-sm-3 sidenav menu">
+            <div class="menu">
+                <header class="country side-bar-title">Country</header>
+                <mat-radio-group class="example-radio-group radios" [(ngModel)]="countryName">
+                    <mat-radio-button
+                        class="example-radio-button"
+                        (change)="onSelectionChange(null)">
+                        All
+                    </mat-radio-button>
+                    <mat-radio-button
+                        class="example-radio-button"
+                        *ngFor="let c of countries"
+                        value="{{c}}"
+                        (change)="onSelectionChange(c)">
+                        {{c | titlecase}}
+                    </mat-radio-button>
+
+                </mat-radio-group>
+
+                <header class="state side-bar-title">State</header>
+                <mat-radio-group class="example-radio-group radios" [(ngModel)]="valid">
+                    <mat-radio-button
+                        class="example-radio-button"
+                        (change)="onStateChange(null)">
+                        All
+                    </mat-radio-button>
+                    <mat-radio-button
+                        class="example-radio-button"
+                        value="true"
+                        (change)="onStateChange('true')">
+                        Valid
+                    </mat-radio-button>
+                    <mat-radio-button
+                        class="example-radio-button"
+                        value="false"
+                        (change)="onStateChange('false')">
+                        Invalid
+                    </mat-radio-button>
+                </mat-radio-group>
+
+            </div>
+
+        </div>
+
+        <div class="col-sm-9">
+
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Country</th>
+                    <th scope="col">Valid</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let c of customers">
+                    <td>{{c.name}}</td>
+                    <td>{{c.phone}}</td>
+                    <td>{{c.countryName}}</td>
+                    <td>{{c.valid}}</td>
+
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-2">&nbsp;</div>
+</div>
+
+
+
+
+
+
